@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.sass']
 })
 export class AppComponent {
-  title = 'ang_home-work_lernJS2020';
+  myTitle = 'ang_home-work_lernJS2020';
 }
