@@ -7,6 +7,7 @@ import { CartBlockComponent } from './cart-block/cart-block.component';
 import {CardModule} from "./card/card.module";
 import {FooterModule} from "./footer/footer.module";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {ProductCardModule} from "./product-card/product-card.module";
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     AppRoutingModule,
     CardModule,
     FooterModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    ProductCardModule
   ],
   providers: [],
   bootstrap: [AppComponent]

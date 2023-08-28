@@ -1,12 +1,12 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {cartProduct, ICartProduct} from "../../shared/mocks/card-component/card-products";
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { cartProduct, ICartProduct } from "../../shared/mocks/card-component/card-products";
 
 @Component({
   selector: 'app-card',
   templateUrl: './card.component.html',
   styleUrls: ['./card.component.sass']
 })
-export class CardComponent implements OnInit{
+export class CardComponent implements OnInit {
   public card: ICartProduct = cartProduct;
 
   @Output() // Define the output event
@@ -18,27 +18,34 @@ export class CardComponent implements OnInit{
   @Output()
   public basketArrayChange = new EventEmitter<ICartProduct[]>()
 
-
   @Input()
   public value = 0
+
+  @Output()
+  public isOpenChange = new EventEmitter<boolean>()
+  public isOpen = false
   public result = this.card.price
   public basketValue = 0
   public basketProductsArr: ICartProduct[] = [];
 
+  public toggleOpen(){
+    this.isOpen = !this.isOpen
+    this.isOpenChange.emit(this.isOpen)
+  }
 
-  public decrement(){
-    if (this.value > 1){
-      this.value-=1
+  public decrement() {
+    if (this.value > 1) {
+      this.value -= 1
       this.valueChanged.emit(this.value)
-
     }
   }
-  public increment(){
-    this.value+=1
+
+  public increment() {
+    this.value += 1
     this.valueChanged.emit(this.value)
   }
 
-  public addedProductsInBasket():void{
+  public addedProductsInBasket(): void {
     this.basketProductsArr.push(this.card);
     this.basketArrayChange.emit(this.basketProductsArr)
     this.basketValue = this.basketProductsArr.length;
@@ -46,6 +53,5 @@ export class CardComponent implements OnInit{
   }
 
   ngOnInit(): void {
-    console.log(this.result)
   }
 }
